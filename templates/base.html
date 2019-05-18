@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Математическая карусель</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Математическая карусель</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/news/">Новости</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/email">Обратная связь</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/users/signup">Регистрация</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Домашняя</a>
+            </li>
+            <li class="nav-item">
+                {% if user.is_authenticated %}
+                
+                <li><a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Выйти</a></li>   
+              {% else %}
+                <li><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Войти</a></li>   
+              {% endif %}
+              <li><a class="nav-link active">Пользователь: {{ user.get_username }}</a></li>
+                </li>
+
+
+        </ul>
+    </div>
+
+</nav>
+
+<body>
+    <div class="jumbotron-fluid">
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+           
+</body>
+</html>

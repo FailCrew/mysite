@@ -26,4 +26,5 @@ urlpatterns = [
     path('users/', include('django.contrib.auth.urls')),
     url(r'^news/', include('news.urls')),
     path('', include('sendemail.urls')),
+    url(r'^q/', include('quiz.urls')),
 ]

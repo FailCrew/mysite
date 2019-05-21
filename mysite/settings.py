@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'news',
-    'sendemail',
-    'questions',
+    'essay',
+    'multichoice',
+    'quiz',
+    'true_false',
+    'sendemail.apps.SendemailConfig',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +134,5 @@ LOGOUT_REDIRECT_URL = 'home'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '/media')
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

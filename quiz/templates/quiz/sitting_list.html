@@ -10,10 +10,10 @@
 
 		  <thead>
 			<tr>
-			  <th>{% trans "User" %}</th>
-			  <th>{% trans "Quiz" %}</th>
+			  <th>{% trans "Команда" %}</th>
+			  <th>{% trans "Соревнование" %}</th>
 			  <th>{% trans "Completed" %}</th>
-			  <th>{% trans "Score" %}(%)</th>
+			  <th>{% trans "Счёт" %}</th>
 			  <th></th>
 			</tr>
 		  </thead>
@@ -33,10 +33,10 @@
         {% for sitting in sitting_list %}
 
 			<tr>
-			  <td>{{ sitting.user }}</td>
+			  <td>{{ sitting.user.team }}</td>
 			  <td>{{ sitting.quiz }}</td>
-			  <td>{{ sitting.end|date }}</td>
-			  <td>{{ sitting.get_percent_correct }}</td>
+			  <td>{{ sitting.end|time }}</td>
+			  <td>{{ sitting.get_current_score }}</td>
 			  <td>
 				<a href="{% url 'quiz_marking_detail' pk=sitting.id %}">
 				  {% trans "View details" %}

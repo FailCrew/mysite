@@ -212,6 +212,7 @@ class QuizTake(FormView):
             self.sitting.add_to_score(1)
             progress.update_score(self.question, 1, 1)
         else:
+            self.sitting.add_to_score(-(self.sitting.get_current_score))
             self.sitting.add_incorrect_question(self.question)
             progress.update_score(self.question, 0, 1)
 

@@ -35,7 +35,7 @@
 	  <strong>{{ quiz.title }}</strong></p>
 
 	<p class="lead">
-	  {% trans "You answered" %} {{ score }} {% trans "questions correctly out of" %} {{ max_score }}, {% trans "giving you" %} {{ percent }} {% trans "percent correct" %}
+	  {% trans "Ваша цепочка правильных ответов достигла длины" %} {{ score }} {% trans "из" %} {{ max_score }}, {% trans "возможных" %} 
 	</p>
 
 	{% if quiz.pass_mark %}
@@ -45,11 +45,11 @@
 
 	{% endif %}
 
-	<p>{% trans "Review the questions below and try the exam again in the future"%}.</p>
+
 
 	{% if user.is_authenticated %}
 
-	  <p>{% trans "The result of this exam will be stored in your progress section so you can review and monitor your progression" %}.</p>
+	  <p>{% trans "Результаты соревнования будут сохранены. Вы сможете просмотреть их в разделе Результаты</a>" %}.</p>
 
 	{% endif %}
   </div>

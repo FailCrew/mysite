@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-
-{% block content %}
-<div class="container">
-  <h5 class="text-info">{{question.title}}</h5>
-  <h6 class="text-info">{{question.date|date:"d-m-Y в H:i:s"}}</h6>
-  <p>{{question.post|safe|linebreaks}}</p>
-</div>
-{% endblock %} 

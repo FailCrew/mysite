@@ -43,22 +43,20 @@ class CustomUserCreationForm(UserCreationForm):
             'class': 'form-control'
         }
     ))
-    
+    participants = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'form-control'
+        }
+    ))
+
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = ('username', 'email', 'city', 'school', 'clas', 'team', 'lastname', 'name')
+        fields = ('username', 'email', 'city', 'school', 'clas', 'team', 'lastname', 'name', 'participants')
         
 
 class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'city', 'school', 'clas', 'team', 'lastname', 'name')
+        fields = ('username', 'email', 'city', 'school', 'clas', 'team', 'lastname', 'name', 'participants')
 
-class SignUpForm(forms.ModelForm):
-    username = forms.CharField(widget=forms.TextInput(
-        attrs={
-            'class': 'form-control'
-        }
-    ))
-    

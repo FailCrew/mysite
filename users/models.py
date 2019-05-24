@@ -6,6 +6,7 @@ from django.db import models
 
 class CustomUser(AbstractUser):
     # add additional fields in here
+    participants = models.TextField(max_length=300, help_text='Участники')
     name = models.CharField(max_length=20, help_text='Имя')
     lastname = models.CharField(max_length=20, help_text='Фамилия')
     team = models.CharField(max_length=20, help_text='Команда')

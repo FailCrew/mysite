@@ -393,6 +393,8 @@ class Sitting(models.Model):
 
     current_score = models.IntegerField(verbose_name=_("Current Score"))
 
+    max_current_score = models.IntegerField(verbose_name=_("Max Current"), default=0)
+
     complete = models.BooleanField(default=False, blank=False,
                                    verbose_name=_("Complete"))
 
@@ -434,10 +436,18 @@ class Sitting(models.Model):
         self.current_score += int(points)
         self.save()
 
+    def set_max_current(self):
+        self.max_current_score = self.current_score
+        self.save()    
+
     @property
     def get_current_score(self):
         return self.current_score
 
+    @property
+    def get_max_current(self):
+        return self.max_current_score
+    
     def _question_ids(self):
         return [int(n) for n in self.question_order.split(',') if n]
 

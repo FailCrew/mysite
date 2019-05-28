@@ -212,6 +212,7 @@ class QuizTake(FormView):
             self.sitting.add_to_score(1)
             progress.update_score(self.question, 1, 1)
         else:
+            self.sitting.set_max_current()
             self.sitting.add_to_score(-(self.sitting.get_current_score))
             self.sitting.add_incorrect_question(self.question)
             progress.update_score(self.question, 0, 1)
@@ -232,7 +233,7 @@ class QuizTake(FormView):
     def final_result_user(self):
         results = {
             'quiz': self.quiz,
-            'score': self.sitting.get_current_score,
+            'score': self.sitting.get_max_current,
             'max_score': self.sitting.get_max_score,
             'percent': self.sitting.get_percent_correct,
             'sitting': self.sitting,

@@ -434,6 +434,7 @@ class Sitting(models.Model):
         self.current_score += int(points)
         self.save()
 
+
     @property
     def get_current_score(self):
         return self.current_score

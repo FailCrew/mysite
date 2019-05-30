@@ -231,6 +231,7 @@ class QuizTake(FormView):
         self.sitting.remove_first_question()
 
     def final_result_user(self):
+        self.sitting.set_max_current()
         results = {
             'quiz': self.quiz,
             'score': self.sitting.get_max_current,

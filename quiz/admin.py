@@ -7,10 +7,14 @@ from .models import Quiz, Category, SubCategory, Progress, Question
 from multichoice.models import MCQuestion, Answer
 from true_false.models import TF_Question
 from essay.models import Essay_Question
+from essay.models import EssayAnswer
 
 
 class AnswerInline(admin.TabularInline):
     model = Answer
+
+class AnswerForEssay(admin.TabularInline):
+    model = EssayAnswer
 
 
 class QuizAdminForm(forms.ModelForm):
@@ -98,9 +102,11 @@ class TFQuestionAdmin(admin.ModelAdmin):
 class EssayQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
     list_filter = ('category',)
-    fields = ('content', 'category', 'sub_category', 'quiz', 'explanation', )
+    fields = ('content','category', 'sub_category', 'quiz', 'explanation', 'AnswerID')
     search_fields = ('content', 'explanation')
     filter_horizontal = ('quiz',)
+
+    inlines = [AnswerForEssay]
 
 admin.site.register(Quiz, QuizAdmin)
 admin.site.register(Category, CategoryAdmin)

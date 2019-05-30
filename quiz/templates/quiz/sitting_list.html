@@ -36,7 +36,7 @@
 			  <td>{{ sitting.user.team }}</td>
 			  <td>{{ sitting.quiz }}</td>
 			  <td>{{ sitting.end|time }}</td>
-			  <td>{{ sitting.get_current_score }}</td>
+			  <td>{{ sitting.get_max_current }}</td>
 			  <td>
 				<a href="{% url 'quiz_marking_detail' pk=sitting.id %}">
 				  {% trans "View details" %}

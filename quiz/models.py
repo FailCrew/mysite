@@ -437,8 +437,9 @@ class Sitting(models.Model):
         self.save()
 
     def set_max_current(self):
-        self.max_current_score = self.current_score
-        self.save()    
+        if self.max_current_score < self.current_score:
+            self.max_current_score = self.current_score
+            self.save()    
 
     @property
     def get_current_score(self):

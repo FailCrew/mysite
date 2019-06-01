@@ -6,13 +6,13 @@
 {% endblock %}
 
 {% block content %}
-<h2>{% trans "Quiz title" %}: {{ sitting.quiz.title }}</h2>
+<h2>{% trans "Название соревнования" %}: {{ sitting.quiz.title }}</h2>
 <h3>{% trans "Category" %}: {{ sitting.quiz.category }}</h3>
 <p>{{ sitting.quiz.description }}</p>
 <hr>
 <p>{% trans "User" %}: {{ sitting.user }}</p>
-<p>{% trans "Completed" %}: {{ sitting.end|date }}</p>
-<p>{% trans "Score" %}: {{ sitting.get_percent_correct }}%</p>
+<p>{% trans "Completed" %}: {{ sitting.end|date}}</p>
+
 
 <table class="table table-bordered table-striped">
 

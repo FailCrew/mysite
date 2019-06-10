@@ -7,47 +7,48 @@ class CustomUserCreationForm(UserCreationForm):
         attrs={
             'class': 'form-control'
         }
-    ))
+    ), label='Логин')
     email = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-control'
         }
-    ))
+    ), label='Почта')
     city = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-control'
         }
-    ))
+    ), label='Город')
     school = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-control'
         }
-    ))
+    ), label='Школа')
     clas = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-control'
         }
-    ))
+    ), label='Класс')
     team = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-control'
         }
-    ))
+    ), label='Команда')
     lastname = forms.CharField(widget=forms.TextInput(
         attrs={
-            'class': 'form-control'
+            'class': 'form-control',
+            'name': 'Фамилия'
         }
-    ))
+    ), label='Фамилия сопровождающего')
     name = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-control'
         }
-    ))
+    ), label='Имя  сопровождающего')
     participants = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-control'
         }
-    ))
+    ), label='Участники')
 
     class Meta(UserCreationForm):
         model = CustomUser

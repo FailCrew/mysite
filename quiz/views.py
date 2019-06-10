@@ -1,5 +1,7 @@
 import random
 
+import datetime
+
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404, render
@@ -207,7 +209,10 @@ class QuizTake(FormView):
         progress, c = Progress.objects.get_or_create(user=self.request.user)
         guess = form.cleaned_data['answers']
         is_correct = self.question.check_if_correct(guess)
-
+        print(datetime.datetime.utcnow().hour)
+        if (self.sitting.start.hour + (self.sitting.start.minute/60) + 1) < (datetime.datetime.utcnow().hour + datetime.datetime.utcnow().minute/60):
+            self.sitting.time_end()
+        
         if is_correct is True:
             self.sitting.add_to_score(1)
             progress.update_score(self.question, 1, 1)
@@ -229,6 +234,7 @@ class QuizTake(FormView):
 
         self.sitting.add_user_answer(self.question, guess)
         self.sitting.remove_first_question()
+
 
     def final_result_user(self):
         self.sitting.set_max_current()

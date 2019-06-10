@@ -11,6 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.timezone import now
 from django.utils.encoding import python_2_unicode_compatible
 from django.conf import settings
+from django.utils.timezone import utc
 
 from model_utils.managers import InheritanceManager
 
@@ -423,6 +424,9 @@ class Sitting(models.Model):
         first, _ = self.question_list.split(',', 1)
         question_id = int(first)
         return Question.objects.get_subclass(id=question_id)
+
+    def time_end(self):
+        self.question_list = ""
 
     def remove_first_question(self):
         if not self.question_list:
